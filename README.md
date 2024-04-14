@@ -52,3 +52,10 @@ To evaluate the model's performance, use the following scripts:
 - /home/evaluate_biomarkers.py to extract biomarkers from the model output and ground truth.
 - /home/evaluate_observers.py to assess inter-observer, intra-observer, and reliability of manual labeling.
 
+<style>
+.gray-text {
+    color: gray;
+}
+</style>
+
+- Convert DICOM files to NIfTI format using <span class="gray-text">/main/dicom2nifti.py</span>.
