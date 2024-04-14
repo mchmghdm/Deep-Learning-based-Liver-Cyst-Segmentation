@@ -30,7 +30,7 @@ For more detailed installation instructions, refer to the [installation instruct
 # Pre-processing
 Before training the model, you will need to preprocess the data:
 
-- Convert DICOM files to NIfTI format using <span style="color: gray">/main/dicom2nifti.py.
+- Convert DICOM files to NIfTI format using <span style="color: gray">/main/dicom2nifti.py</span>.
 - Preprocess the data using '/main/data_conversion_liver_file.py to convert the training/validation and test sets to the format required by the nnUNet framework'.
 
 # Training
