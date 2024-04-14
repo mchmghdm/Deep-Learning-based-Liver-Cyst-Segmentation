@@ -1,3 +1,6 @@
+
+
+
 import os
 import shutil
 from pathlib import Path
@@ -9,12 +12,12 @@ from nnunetv2.paths import nnUNet_raw
 
 
 def make_out_dirs(dataset_id: int, task_name="ADPKDCystLiver"):
-    pdb.set_trace()
+    
+    # making needed folders to store and load the data working with nnUNet
+    
     dataset_name = f"Dataset{dataset_id:03d}_{task_name}"
     
- 
-    #out_dir = Path(nnUNet_raw.replace('"', "")) / dataset_name # here we have a problem 
-    nnUNet_raw_path = Path('/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data')
+    nnUNet_raw_path = Path('.../nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data')
     out_dir = nnUNet_raw_path / dataset_name
     
     out_train_dir = out_dir / "imagesTr"
@@ -23,7 +26,6 @@ def make_out_dirs(dataset_id: int, task_name="ADPKDCystLiver"):
     out_test_label_dir = out_dir / "test_gt"
     out_train_pred_dir = out_dir / "pred_nnUnet_train"
     out_test_pred_dir = out_dir / "pred_nnUnet_test"
-    
     
     os.makedirs(out_dir, exist_ok=True)
     os.makedirs(out_train_dir, exist_ok=True)
@@ -38,8 +40,7 @@ def make_out_dirs(dataset_id: int, task_name="ADPKDCystLiver"):
 
 def copy_files(src_data_folder: Path, train_dir: Path, labels_dir: Path, test_dir: Path, test_label_dir: Path):
     """Copy files from the PKD_Cyst (PKDC) dataset to the nnUNet dataset folder. Returns the number of training cases."""
-    # src_data_folder to be /home/mina/cyst_train/001/
-    pdb.set_trace()
+    
     patients_train = sorted([f for f in (src_data_folder / "training").iterdir() if f.is_dir()])
     patients_test = sorted([f for f in (src_data_folder / "testing").iterdir() if f.is_dir()])
   
@@ -67,20 +68,16 @@ def copy_files(src_data_folder: Path, train_dir: Path, labels_dir: Path, test_di
     return num_training_cases
 
 def convert_acdc(src_data_folder: str, dataset_id):
-    pdb.set_trace()
+
     out_dir, train_dir, labels_dir, test_dir , test_label_dir = make_out_dirs(dataset_id=dataset_id)
   
-    pdb.set_trace()
-    
     num_training_cases = copy_files(Path(src_data_folder), train_dir, labels_dir, test_dir , test_label_dir)
     
-    pdb.set_trace()
-
     generate_dataset_json(
         str(out_dir),
         channel_names={
             0: "MRI",
-            # 1: "Organ_seg" # for later
+            # 1: "Organ_seg" 
         },
         
         labels={
