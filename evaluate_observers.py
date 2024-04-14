@@ -1,3 +1,8 @@
+# This file is to run interobserver variabilty in manuall segmentation as well as intra-observer variabilty
+# all observers' segmentation outcomes are compared to the ground-truth generrated by an experiment radiologyst.
+
+# Auther: Mina C. Moghadam, April 2024
+
 import multiprocessing
 import os
 from copy import deepcopy
@@ -99,14 +104,8 @@ def compute_metrics(reference_file: str, prediction_file: str, image_reader_writ
     # load images
     seg_ref, seg_ref_dict = image_reader_writer.read_seg(reference_file)
     
-    #print('Here I am')
-
-    #print(np.unique(seg_ref))
-
     seg_ref[np.isclose(seg_ref , 4.)] = 1
     
-    #print(np.unique(seg_ref))
-
     seg_pred, seg_pred_dict = image_reader_writer.read_seg(prediction_file)
     
     seg_pred[np.isclose(seg_pred , 4.)] = 1
@@ -123,8 +122,7 @@ def compute_metrics(reference_file: str, prediction_file: str, image_reader_writ
     for r in labels_or_regions:
  
         results['metrics'][r] = {}
-        
-       
+          
         mask_ref = region_or_label_to_mask(seg_ref, r)
    
         mask_pred = region_or_label_to_mask(seg_pred, r)
@@ -311,44 +309,34 @@ def count_num_of_cysts(seg_mask):
     connectivity = 18 # only 4,8 (2D) and 26, 18, and 6 (3D) are allowed
     labels_out , cyst_count  = cc3d.connected_components(seg_mask[0], connectivity=connectivity , return_N=True)
     
-  
-    #print(cyst_count)
-    
     return(cyst_count)
 
 
 if __name__ == '__main__':
-   
-    #folder_obs1 = '/home/mina/15_liver_prospective_masks/observer1_Usama'
+      
+    folder_obs1 = '.../observer1'
     
-    folder_obs1 = '/home/mina/15_liver_internal_test_masks/observer3_Arman1'
-    
-    folder_obs2 = '/home/mina/15_liver_internal_test_masks/observer3_Arman2'
-    
-    #folder_obs1 = '/home/mina/15_liver_prospective_masks/gt_Prince'
-    
+    folder_obs2 = '.../observer2'
     
     # getting average on this three observers for noise ceiling 
-    #output_file = '/home/mina/15_liver_prospective/summary_Usama_Fiona.json'
-    #output_file = '/home/mina/15_liver_prospective_masks/summary_Usama_Arman.json'
-    #output_file = '/home/mina/15_liver_prospective_masks/summary_Fiona_Usama.json'
+    #output_file = '.../summary_observer1_onserver2.json'
+    #output_file = '.../summary_observer1_onserver3.json'
+    #output_file = '.../summary_observer2_onserver3.json'
     
     
-    # having Dr. Princes gold standard ground-truth, comparing each individual with the gt, for human-level reliability
-    #output_file = '/home/mina/15_liver_prospective_masks/summary_Usama_Prince.json'
-    #output_file = '/home/mina/15_liver_prospective_masks/summary_Fiona_Prince.json'
-    output_file = '/home/mina/15_liver_internal_test_masks/summary_Arman1_Arman2.json'
+    # having gold standard ground-truth, comparing each individual with the gt, for human-level reliability
+    #output_file = '/home/mina/15_liver_prospective_masks/summary_observer1_gt.json'
+    #output_file = '/home/mina/15_liver_prospective_masks/summary_observer2_gt.json'
+    output_file = '/home/mina/15_liver_internal_test_masks/summary_observer3_gt.json'
     
     # we can check if human level reliabilty could be increased if we use model assisted masks
     # TO be DONE Later
     
-    
-    
     image_reader_writer = SimpleITKIO()
     file_ending = '.nii.gz'
-    #regions = labels_to_list_of_regions([1, 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10, 11, 12])
+
     regions = labels_to_list_of_regions([1])
-    #regions = labels_to_list_of_regions([1,2,3,4,5])
+
     
     ignore_label = None
     num_processes = 12
