@@ -1,3 +1,8 @@
+# This file is to evaluate the model outcome to the ground-truth annotation
+# Dice scores and voxel-level true positive rate (VTPR)
+
+# Auther: Mina C. Moghadam, April 2024
+
 import multiprocessing
 import os
 from copy import deepcopy
@@ -315,23 +320,16 @@ def cysts_volume (seg_mask):
     return(cyst_vol)
 
 if __name__ == '__main__':
-    #folder_ref = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset201_ADPKDCystLiver/test_gt/'
-    #folder_ref = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset201_ADPKDCystLiver/test_gt_T2/'
-    folder_ref = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/labelsTr/'
     
-    #folder_pred = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset201_ADPKDCystLiver/pred_nnUnet_test/'
-    folder_pred = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/pred_nnUnet_valid3d/'
-    #folder_pred = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/pred_nnUnet_test_T2/'
+    folder_ref = '.../nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/labelsTr/'
     
-    #output_file = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset201_ADPKDCystLiver/pred_nnUnet_test/summary_test.json'
-    #output_file = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/pred_nnUnet_test_T2/summary_test.json'
-    output_file = '/home/mina/Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/pred_nnUnet_valid3d/summary_valid.json'
+    folder_pred = '.../Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/pred_nnUnet/'
+    
+    output_file = '.../Projects/nnUNetFrame/dataset/nnUNet_raw/nnUNet_raw_data/Dataset210_ADPKDCystLiver/pred_nnUnet/summary.json'
     
     image_reader_writer = SimpleITKIO()
     file_ending = '.nii.gz'
-    #regions = labels_to_list_of_regions([1, 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10, 11, 12])
     regions = labels_to_list_of_regions([1])
-    #regions = labels_to_list_of_regions([1,2,3,4,5])
     
     ignore_label = None
     num_processes = 12
