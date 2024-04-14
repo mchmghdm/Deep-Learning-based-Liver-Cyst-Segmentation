@@ -26,6 +26,11 @@ pip install -e
 
 For more detailed installation instructions, refer to the [installation instructions](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md) provided in the nnUNet documentation:
 
+<style>
+.gray-text {
+    color: gray;
+}
+</style>
 
 # Pre-processing
 Before training the model, you will need to preprocess the data:
