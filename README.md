@@ -18,10 +18,11 @@ pip install nnunetv2
 
 To clone the nnUNet repository and set it up for modification, use the following commands:
 
+```bash
 git clone https://github.com/MIC-DKFZ/nnUNet.git
 cd nnUNet
-pip install -e.
-
+pip install -e
+```
 
 For more detailed installation instructions, refer to the [installation instructions](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md) provided in the nnUNet documentation:
 
