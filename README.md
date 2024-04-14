@@ -14,16 +14,17 @@ This work is based on the nnUNet framework, a self-configuring medical image seg
 To install nnUNet and start working with it, you can use pip:
 ```bash
 pip install nnunetv2
+```
 
 To clone the nnUNet repository and set it up for modification, use the following commands:
 
 git clone https://github.com/MIC-DKFZ/nnUNet.git
 cd nnUNet
-pip install -e .
+pip install -e.
 
 
-For more detailed installation instructions, refer to the installation instructions provided in the nnUNet documentation:
-https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md
+For more detailed installation instructions, refer to the [installation instructions](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md) provided in the nnUNet documentation:
+
 
 # Pre-processing
 Before training the model, you will need to preprocess the data:
