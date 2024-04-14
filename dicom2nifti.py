@@ -115,10 +115,8 @@ def dicom_file_names_read(dicom_folder_path):
     return sorted_dicom_names
 
 if __name__ == "__main__":
-    dicom_folder_path = "/home/mina/cyst_training_original/1006399808_23_06_15/1_2_840_114350_2_535_2_798268_2_583649091_1/scans/7-Ax_VIBE_Dixon_W/resources/DICOM/files/"
-    nifty_path = "/home/mina/cyst_training/1006399808_23_06_15_ax_T1/"
+    dicom_folder_path = ".../DICOM/files/"
+    nifty_path = ".../cyst_training/DICOM_FileName/"
     dicom2nifty(dicom_folder_path, nifty_path)
-
-    print('test')
 
 
