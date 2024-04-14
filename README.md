@@ -30,15 +30,15 @@ For more detailed installation instructions, refer to the [installation instruct
 # Pre-processing
 Before training the model, you will need to preprocess the data:
 
-- Convert DICOM files to NIfTI format using /main/dicom2nifti.py.
-- Preprocess the data using /main/data_conversion_liver_file.py to convert the training/validation and test sets to the format required by the nnUNet framework.
+- Convert DICOM files to NIfTI format using '/main/dicom2nifti.py'.
+- Preprocess the data using '/main/data_conversion_liver_file.py to convert the training/validation and test sets to the format required by the nnUNet framework'.
 
 # Training
-To train the model using both 2D and 3D methods, execute the /home/run_training.sh script.
+To train the model using both 2D and 3D methods, execute the '/home/run_training.sh' script.
 
 ## Inference
-To perform inference on the test set using the trained model, run /home/run_inference.py.
-For a sanity check, run /home/run_inference_validation.sh to see the model outcomes on the validation set.
+To perform inference on the test set using the trained model, run '/home/run_inference.py'.
+For a sanity check, run '/home/run_inference_validation.sh' to see the model outcomes on the validation set.
 
 ## Evaluation
 To evaluate the model's performance, use the following scripts:
