@@ -1,5 +1,5 @@
-
-
+# This file is to copying our dataset of ADPKD patients to the write folders suitable to be used in nnUNet.
+# Auther: Mina C. Moghadam, April 2024
 
 import os
 import shutil
