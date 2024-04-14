@@ -26,11 +26,6 @@ pip install -e
 
 For more detailed installation instructions, refer to the [installation instructions](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/installation_instructions.md) provided in the nnUNet documentation:
 
-<style>
-.gray-text {
-    color: gray;
-}
-</style>
 
 # Pre-processing
 Before training the model, you will need to preprocess the data:
@@ -51,11 +46,3 @@ To evaluate the model's performance, use the following scripts:
 - /home/evaluate_predictions.py to evaluate the model outcome.
 - /home/evaluate_biomarkers.py to extract biomarkers from the model output and ground truth.
 - /home/evaluate_observers.py to assess inter-observer, intra-observer, and reliability of manual labeling.
-
-<style>
-.gray-text {
-    color: gray;
-}
-</style>
-
-- Convert DICOM files to NIfTI format using <span class="gray-text">/main/dicom2nifti.py</span>.
